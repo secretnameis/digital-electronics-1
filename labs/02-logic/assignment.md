@@ -1,4 +1,4 @@
-# Lab 2: Daniel Kunèickı
+# Lab 2: Daniel KunÄickÃ½
 
 ### 2-bit comparator
 
@@ -58,7 +58,7 @@
 
 2. Text console screenshot during your simulation, including reports.
 
-   ![your figure](images/eda_console.png)
+   ![your figure](images/eda_console.PNG)
 
 3. Link to your public EDA Playground example:
 
