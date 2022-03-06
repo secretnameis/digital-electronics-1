@@ -25,12 +25,12 @@ end entity tb_mux_3bit_4to1;
 architecture testbench of tb_mux_3bit_4to1 is
 
     -- Local signals
-    signal s_a           : std_logic_vector(2 downto 0);
-    signal s_b           : std_logic_vector(2 downto 0);
-    signal s_c           : std_logic_vector(2 downto 0);
-    signal s_d           : std_logic_vector(2 downto 0);
-    signal s_sel         : std_logic_vector(1 downto 0);
-    signal s_f           : std_logic;
+    signal s_a           : std_logic_vector(3 - 1 downto 0);
+    signal s_b           : std_logic_vector(3 - 1 downto 0);
+    signal s_c           : std_logic_vector(3 - 1 downto 0);
+    signal s_d           : std_logic_vector(3 - 1 downto 0);
+    signal s_sel         : std_logic_vector(2 - 1 downto 0);
+    signal s_f           : std_logic_vector(3 - 1 downto 0);
 begin
     -- Connecting testbench signals with comparator_4bit
     -- entity (Unit Under Test)
@@ -59,9 +59,10 @@ begin
         s_sel <="01"; wait for 100 ns;
         s_sel <="10"; wait for 100 ns;
         s_sel <="11"; wait for 100 ns;
+       
         -- If false, then report an error
         -- If true, then do not report anything
-       -- report "1 Input combination 0001, 0010 FAILED" severity error;
+        -- report "1 Input combination 0001, 0010 FAILED" severity error;
 
         -- Report a note at the end of stimulus process
         report "Stimulus process finished" severity note;
