@@ -1,4 +1,4 @@
-# Lab 5: Daniel Kunèickı
+# Lab 5: Daniel KunÄickÃ½
 
 ### Flip-flops
 
