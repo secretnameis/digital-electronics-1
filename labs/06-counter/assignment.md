@@ -1,4 +1,4 @@
-# Lab 6: Daniel Kunèickı
+# Lab 6: Daniel KunÄickÃ½
 
 ### Bidirectional counter
 
