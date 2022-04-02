@@ -79,11 +79,10 @@ begin
     -- WRITE YOUR CODE HERE AND ACTIVATE RESET FOR A WHILE
     p_reset_gen : process
     begin 
-        s_reset <='0'; wait for 12 ns;
-        --reset activated
-        s_reset <='1'; wait for 73 ns;
+        s_reset <='1'; wait for 12 ns; --reset activated
         --reset deactivated
         s_reset <='0';
+wait;
         
     end process p_reset_gen;
     --------------------------------------------------------
