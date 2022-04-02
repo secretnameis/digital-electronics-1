@@ -58,7 +58,7 @@ begin
                 ce_o        <= '1'; -- Generate clock enable pulse
 
             else
-                s_cnt_local <= s_cnt_local + 1; --akumulator pulzu
+                s_cnt_local <= s_cnt_local + 1;
                 ce_o        <= '0';
             end if;
         end if;

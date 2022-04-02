@@ -1,3 +1,4 @@
+
 ------------------------------------------------------------
 --
 -- Driver for 4-digit 7-segment display.
@@ -79,7 +80,7 @@ begin
         )
         port map(
             clk   => clk, -- WRITE YOUR CODE HERE
-            reset => reset,-- WRITE YOUR CODE HERE
+            reset => reset, -- WRITE YOUR CODE HERE
             ce_o  => s_en
         );
 
@@ -88,14 +89,14 @@ begin
     -- down counter
     bin_cnt0 : entity work.cnt_up_down
         generic map(
-            g_CNT_WIDTH =>2-- WRITE YOUR CODE HERE
+           g_CNT_WIDTH => 2 -- WRITE YOUR CODE HERE
         )
         port map(
-            en_i        =>s_en,-- WRITE YOUR CODE HERE
-            cnt_up_i    =>'0',
-            reset       => reset,
-            clk         => clk,
-            cnt_o       => s_cnt       
+            en_i=>s_en,
+            cnt_up_i=> '0',
+            reset=>reset,
+            clk=>clk,
+            cnt_o=>s_cnt -- WRITE YOUR CODE HERE
         );
 
     --------------------------------------------------------
@@ -131,19 +132,16 @@ begin
                         s_hex <= data2_i;
                         dp_o  <= dp_i(2);
                         dig_o <= "1011";
-                        -- DEFINE ALL OUTPUTS FOR "10" HERE
 
                     when "01" =>
-                       s_hex <= data1_i;
+                        s_hex <= data1_i;
                         dp_o  <= dp_i(1);
                         dig_o <= "1101";
-                        -- DEFINE ALL OUTPUTS FOR "01" HERE
 
                     when others =>
                         s_hex <= data0_i;
                         dp_o  <= dp_i(0);
                         dig_o <= "1110";
-                        -- DEFINE ALL OUTPUTS FOR "00" HERE
                 end case;
             end if;
         end if;

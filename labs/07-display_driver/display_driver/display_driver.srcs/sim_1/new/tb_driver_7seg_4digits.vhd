@@ -30,35 +30,29 @@ architecture testbench of tb_driver_7seg_4digits is
     -- Local signals
     signal s_clk_100MHz : std_logic;
     signal s_reset : std_logic;
-   
-    -- ADD OTHER SIGNALS ACCORDING TO DRIVER_7SEG_4DIGITS ENTITY
-     signal s_data0 : std_logic_vector(3 downto 0);
-     signal s_data1 : std_logic_vector(3 downto 0);
-     signal s_data2 : std_logic_vector(3 downto 0);
-     signal s_data3 : std_logic_vector(3 downto 0);
-     signal s_dpin    : std_logic_vector(3 downto 0);
-     signal s_dpout    : std_logic;
-     signal s_seg   : std_logic_vector(6 downto 0);
-     signal s_dig   : std_logic_vector(3 downto 0);
+    signal s_data0      : std_logic_vector(4-1 downto 0);
+    signal s_data1      : std_logic_vector(4-1 downto 0);
+    signal s_data2      : std_logic_vector(4-1 downto 0);
+    signal s_data3      : std_logic_vector(4-1 downto 0);
+    signal s_dpin       : std_logic_vector(4-1 downto 0);
+    signal s_dpout      : std_logic;
+    signal s_seg        : std_logic_vector(7-1 downto 0);
+    signal s_dig        : std_logic_vector(4-1 downto 0);
 
 begin
-    -- Connecting testbench signals with driver_7seg_4digits
-    -- entity (Unit Under Test)
-    -- MAP I/O PORTS FROM ENTITY TO LOCAL SIGNALS
-    uut_cnt : entity work.driver_7seg_4digits
-           port map(
-           clk      => s_clk_100MHz,
-           reset    => s_reset,
-           data0_i  => s_data0,
-           data1_i  => s_data1,
-           data2_i  => s_data2,
-           data3_i  => s_data3,
-           dp_i     => s_dpin,
-           dp_o     => s_dpout,
-           seg_o    => s_seg,
-           dig_o    => s_dig
-           );
-
+    uut_dri : entity work.driver_7seg_4digits
+        port map (
+            clk      => s_clk_100MHz,
+            reset    => s_reset,
+            data0_i  => s_data0,
+            data1_i  => s_data1,
+            data2_i  => s_data2,
+            data3_i  => s_data3,
+            dp_i     => s_dpin,
+            dp_o     => s_dpout,
+            seg_o    => s_seg,
+            dig_o    => s_dig
+        );
     --------------------------------------------------------
     -- Clock generation process
     --------------------------------------------------------
@@ -76,31 +70,27 @@ begin
     --------------------------------------------------------
     -- Reset generation process
     --------------------------------------------------------
-    -- WRITE YOUR CODE HERE AND ACTIVATE RESET FOR A WHILE
     p_reset_gen : process
-    begin 
-        s_reset <='1'; wait for 12 ns; --reset activated
-        --reset deactivated
-        s_reset <='0';
-wait;
-        
-    end process p_reset_gen;
+    begin
+        s_reset <= '0'; wait for 14 ns;
+        s_reset <= '1'; wait for 50 ns;
+        s_reset <= '0'; 
+        wait;
+    end process p_reset_gen;  
+
     --------------------------------------------------------
     -- Data generation process
     --------------------------------------------------------
-    -- WRITE YOUR CODE HERE AND TEST INPUT VALUE "3.142"
     p_stimulus : process
     begin
-        report "Stimulus process" severity note;
-        --set input data as 3.142
-        s_data3 <="0011"; --"3"
-        s_data2 <="0001"; --"1"
-        s_data1 <="0100"; --"4"
-        s_data0 <="0010"; --"2"
-        s_dpin  <="0111"; --decimal point
-    
-        report "Stimulus process finished" severity note;
-        wait;  
+        
+        s_data3 <= "0011";
+        s_data2 <= "0001";
+        s_data1 <= "1000";
+        s_data0 <= "0010";
+        s_dpin <= "0111";
+        wait;
+        
     end process p_stimulus;
 
 end architecture testbench;
