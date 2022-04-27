@@ -1,6 +1,6 @@
 ------------------------------------------------------------
 --
--- Driver for 4-digit 7-segment display.
+-- Driver for 4-digit 8-segment display.
 -- Nexys A7-50T, Vivado v2020.1.1, EDA Playground
 --
 -- Copyright (c) 2020-Present Tomas Fryza
@@ -60,17 +60,17 @@ architecture Behavioral of driver_7seg_4digits is
     -- Internal clock enable
     signal s_en1  : std_logic;
     signal s_en2  : std_logic;
-    -- Internal 3-bit counter for multiplexing 8 digits
-    signal s_cnt1 : std_logic_vector(2 downto 0);
-    -- Internal 4-bit value for 7-segment decoder
-    signal s_hex : std_logic_vector(3 downto 0);
+    
+    signal s_cnt1 : std_logic_vector(2 downto 0);  -- Internal 3-bit counter for multiplexing 8 digits
+    
+    signal s_hex : std_logic_vector(3 downto 0); -- Internal 4-bit value for 7-segment decoder
 
 begin
     --------------------------------------------------------
     -- Instance (copy) of clock_enable entity generates 
-    clk_en1 : entity work.clock_enable --for displey driver
-        generic map(
-            g_MAX => 200000 --for recording display 100000
+    clk_en1 : entity work.clock_enable --for display driver
+        generic map(        --for simulation use 4
+            g_MAX => 200000 --for implementation use 200000 or more
         )
         port map(
             clk   => clk,
@@ -95,8 +95,8 @@ begin
         );
 
     clk_en2 : entity work.clock_enable --for shift_array
-        generic map(
-            g_MAX => 100000000 
+        generic map(           --for simulation use 32
+            g_MAX => 50000000  --for implementation use 50000000
         )
         port map(
             clk   => clk,
@@ -137,9 +137,9 @@ begin
             else
                 case s_cnt1 is
                     when "111" =>
-                        dp_o  <= dp_i(7);
-                        dig_o <= "01111111";
-                        s_hex <= data_i(31 downto 28);
+                        dp_o  <= dp_i(7);              --decimal point selection 
+                        dig_o <= "01111111";           --dipslay selection
+                        s_hex <= data_i(31 downto 28); --value to be displayed
 
                     when "110" =>
                         dp_o  <= dp_i(6);

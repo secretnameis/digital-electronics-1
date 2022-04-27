@@ -1,6 +1,6 @@
 ------------------------------------------------------------
 --
--- Template for 4-digit 7-segment display driver testbench.
+-- Template for 8-digit 7-segment display driver testbench.
 -- Nexys A7-50T, Vivado v2020.1.1, EDA Playground
 --
 -- Copyright (c) 2020-Present Tomas Fryza
@@ -30,7 +30,7 @@ architecture testbench of tb_driver_7seg_4digits is
     -- Local signals
     signal s_clk_100MHz     : std_logic;
     signal s_reset          : std_logic;
-    signal S_data           : std_logic_vector(31 downto 0);
+    signal s_data           : std_logic_vector(31 downto 0);
     signal s_dpin           : std_logic_vector(7 downto 0);
     signal s_dpout          : std_logic;
     signal s_seg            : std_logic_vector(6 downto 0);
@@ -85,16 +85,16 @@ begin
     --------------------------------------------------------
     -- Data generation process
     --------------------------------------------------------
-    -- WRITE YOUR CODE HERE AND TEST INPUT VALUE "3.142"
+    -- TEST INPUT VALUE "3.142"
     p_stimulus : process
     begin
         report "Stimulus process started" severity note;
         
         --s_data3 <= "0011";
         --s_data2 <= "0001";
-       -- s_data1 <= "0100";
-       -- s_data0 <= "0010";
-       -- s_dpin  <= "0111";
+        -- s_data1 <= "0100";
+        -- s_data0 <= "0010";
+        -- s_dpin  <= "0111";
         
         report "Stimulus process finished" severity note;
         wait;

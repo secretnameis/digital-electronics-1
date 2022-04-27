@@ -11,21 +11,23 @@ end shift_array;
 
 
 
-architecture shift_array of shift_array is           --1234567890123456
+architecture shift_array of shift_array is           
 signal msg_array : STD_LOGIC_VECTOR(0 to 63);        -- HELLO  HELLO 
-constant PHONE_NO : STD_LOGIC_VECTOR (63 downto 0) :=X"4123304412330444";
+constant MESSAGE : STD_LOGIC_VECTOR (63 downto 0) :=X"4123304412330444"; --message, which will be displayed on 7-seg displays 
 begin
     process (reset, clk)
     
     begin
         if reset = '1' then
-            msg_array <= PHONE_NO;
+            msg_array <= MESSAGE; --load the message to shift array
+
+        --shifting
         elsif(clk'event and clk = '1') then
             msg_array (0 to 59) <= msg_array (4 to 63);
             msg_array (60 to 63) <= msg_array (0 to 3);
         end if;
     end process;
-    x <= msg_array (0 to 31);
+    x <= msg_array (0 to 31); --output (shifted MESSAGE)
     
 end shift_array;
 
