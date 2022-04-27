@@ -1,11 +1,11 @@
-# Běžící text na 7-seg displaji
+# Běžící text na 7-seg displeji
 
 ### Členové týmu
 
-* Member 1 (responsible for xxx)
-* Member 2 (responsible for xxx)
-* Member 3 (responsible for xxx)
-* Member 4 ()
+* Member 1 (implementace shift_array)
+* Member 2 (simulace)
+* Member 3 (debug)
+* Member 4 (github odborník :D )
 
 ### Obsah
 
@@ -30,7 +30,7 @@ Deska Nexys A7 je kompletní platforma pro vývoj digitálních obvodů. Využí
 
 <a name="modules"></a>
 
-## VHDL popis modulů a simulací
+## VHDL popis modulů a simulace
 ### 7-seg display driver
 Tento modul slouží k zobrazování znaků na displeji. Jako vstup mu slouží 32bit pole (data_i), které mu poskytuje shift_array.
 K aktualizaci hodnot jednotlivých displejů dochází postupně a jejich výběr probíhá pomocí 3bit čítače.
@@ -38,11 +38,13 @@ K aktualizaci hodnot jednotlivých displejů dochází postupně a jejich výbě
 Odkaz na kód:
 
 ### shift_array
-Shift array zajišťuje posouvání znaků v poli.   !!!!dodat simulaci
+Shift array zajišťuje posouvání znaků v poli.   
 
 Odkaz na kód: [shift_array](https://github.com/secretnameis/digital-electronics-1/blob/main/labs/projekt/project_3/project_3.srcs/sources_1/new/shift_array.vhd)
    
    testbench: [tb_shift_array](https://github.com/secretnameis/digital-electronics-1/blob/main/labs/projekt/project_3/project_3.srcs/sim_1/new/tb_shift_array.vhd)
+   
+   ![shift_simulace](images/shift_simulation.PNG)
 
 ### clock_enable
 
@@ -57,7 +59,7 @@ Odkaz na kód: [hex_7seg](https://github.com/secretnameis/digital-electronics-1/
 
 <a name="top"></a>
 
-## Popis TOP modulu a simulací
+## Popis TOP modulu
 TOP modul mapuje jednotlivé fyzické displeje s výstupy z driveru.
 
 Odkaz na kód: [top](https://github.com/secretnameis/digital-electronics-1/blob/main/labs/projekt/project_3/project_3.srcs/sources_1/new/top.vhd)
