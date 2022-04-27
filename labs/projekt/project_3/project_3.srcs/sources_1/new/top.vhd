@@ -1,35 +1,5 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 03/30/2022 10:14:16 AM
--- Design Name: 
--- Module Name: top - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
-
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity top is
     port(
@@ -49,18 +19,16 @@ entity top is
 end top;
 
 architecture Behavioral of top is
-  -- No internal signals are needed today:)
+  
 begin
 
   --------------------------------------------------------
   -- Instance (copy) of driver_7seg_4digits entity
   driver_seg_4 : entity work.driver_7seg_4digits
       port map(
-          clk        => CLK100MHZ,
-          
+          clk        => CLK100MHZ,        
           reset      => BTNC,
-          
-          dp_i       => "11111111",
+          dp_i       => "11111111", --turn off all decimal points
 
           -- MAP DECIMAL POINT AND DISPLAY SEGMENTS
           seg_o(6)   => CA,
@@ -73,7 +41,5 @@ begin
           dp_o       => DP,
           dig_o(7 downto 0) => AN(7 downto 0)
       );
-
-
 
 end architecture Behavioral;
